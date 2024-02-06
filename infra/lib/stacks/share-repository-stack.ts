@@ -14,7 +14,7 @@ export class ShareRepositoryStack extends cdk.Stack {
 
     const repository = this.newCodeCommitRepository(props);
     const role = this.newSharingRole(props);
-    repository.grantPull(role);
+    repository.grantPullPush(role);
   }
 
   private newCodeCommitRepository(props: IProps): codecommit.Repository {
@@ -24,9 +24,12 @@ export class ShareRepositoryStack extends cdk.Stack {
   }
 
   private newSharingRole(props: IProps): iam.Role {
+    const ns = this.node.tryGetContext('ns') as string;
     const role = new iam.Role(this, 'SharingRole', {
+      roleName: `${ns}ShareRepositoryRole`,
       assumedBy: new iam.AccountPrincipal(props.shareAccountId),
     });
+
     new cdk.CfnOutput(this, 'RoleArn', {
       value: role.roleArn,
     });

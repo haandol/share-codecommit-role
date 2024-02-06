@@ -8,6 +8,9 @@ interface IConfig {
     ns: string;
     stage: string;
   };
+  aws: {
+    region: string;
+  };
   repository: {
     name: string;
   };
@@ -27,6 +30,11 @@ const schema = joi
       .object({
         ns: joi.string().required(),
         stage: joi.string().required(),
+      })
+      .required(),
+    aws: joi
+      .object({
+        region: joi.string().required(),
       })
       .required(),
     repository: joi

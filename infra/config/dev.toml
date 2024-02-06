@@ -2,6 +2,9 @@
 ns="ShareCodeCommit"
 stage="Dev"
 
+[aws]
+region="ap-northeast-2"
+
 [repository]
 name="share-test" # Codecommit repository name to share
 

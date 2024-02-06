@@ -14,4 +14,7 @@ const app = new cdk.App({
 new ShareRepositoryStack(app, `ShareRepositoryStack`, {
   shareAccountId: Config.share.account,
   repositoryName: Config.repository.name,
+  env: {
+    region: Config.aws.region,
+  },
 });

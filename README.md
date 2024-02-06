@@ -47,9 +47,9 @@ $ cdk bootstrap
 $ cdk deploy "*" --require-apporval never
 ```
 
-# Testing
+# Testing the role
 
-let's say, account 444455556666 has deployed this repository to share its codecommit repository with account 111122223333.
+Let's say, account `444455556666` has deployed this repository to share its codecommit repository with account `111122223333`.
 
 created shareable role arn will be printed in the output of cdk deploy command.
 
@@ -64,5 +64,36 @@ $ aws sts get-caller-identity --query 'Account' --output text
 assume the role in target account using awscli
 
 ```bash
-$ aws sts assume-role --role-arn arn:aws:iam::444455556666:role/ShareRepositoryStack-SharingRolexxxx --role-session-name share-codecommit
+$ aws sts assume-role --role-arn arn:aws:iam::444455556666:role/ShareCodeCommitDevShareRepositoryRole --role-session-name share-codecommit
+```
+
+# Clone the repository
+
+add following profile to your `~/.aws/config` file
+
+> the default profile should have the permission to assume the role, like 111122223333 account above.
+
+```toml
+[profile codecommit]
+region=ap-northeast-2
+role_arn=arn:aws:iam::444455556666:role/ShareCodeCommitDevShareRepositoryRole
+source_profile=default
+```
+
+install git-remote-codecommit
+
+```bash
+$ pip install git-remote-codecommit
+```
+
+clone the repository
+
+```bash
+$ git clone codecommit::ap-northeast-2://codecommit@share-test
+```
+
+# Cleanup
+
+```bash
+$ cdk destroy "*"
 ```
