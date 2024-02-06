@@ -1,0 +1,9 @@
+[app]
+ns="ShareCodeCommit"
+stage="Dev"
+
+[repository]
+name="share-test" # Codecommit repository name to share
+
+[share]
+account="" # Account to share the repository with
