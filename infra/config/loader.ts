@@ -16,6 +16,7 @@ interface IConfig {
   };
   share: {
     account: string;
+    expiryDate: string;
   };
 }
 
@@ -45,6 +46,7 @@ const schema = joi
     share: joi
       .object({
         account: joi.string().required(),
+        expiryDate: joi.string().isoDate().required(),
       })
       .required(),
   })
