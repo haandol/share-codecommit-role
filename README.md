@@ -22,6 +22,7 @@ name="share-test" # replace with your repository name
 
 [share]
 account="111122223333" # replace with your account id
+expirtyDate="2024-03-01" # replace with actual expiry date of the sharing
 ```
 
 2. copy `dev.toml` file under infra folder with name `.toml`
@@ -36,7 +37,7 @@ $ cp config/dev.toml .toml
 install cdk
 
 ```bash
-$ npm i -g aws-cdk@2.126.0
+$ npm i -g aws-cdk@2.133.0
 ```
 
 deploy cdk
