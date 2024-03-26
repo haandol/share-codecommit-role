@@ -13,6 +13,7 @@ const app = new cdk.App({
 
 new ShareRepositoryStack(app, `ShareRepositoryStack`, {
   shareAccountId: Config.share.account,
+  expiryDate: Config.share.expiryDate,
   repositoryName: Config.repository.name,
   env: {
     region: Config.aws.region,

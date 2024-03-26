@@ -5,8 +5,8 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 
 interface IProps extends cdk.StackProps {
   shareAccountId: string;
-  repositoryName: string;
   expiryDate: string;
+  repositoryName: string;
 }
 
 export class ShareRepositoryStack extends cdk.Stack {
