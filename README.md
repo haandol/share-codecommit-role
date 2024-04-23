@@ -37,7 +37,7 @@ $ cp config/dev.toml .toml
 install cdk
 
 ```bash
-$ npm i -g aws-cdk@2.133.0
+$ npm i -g aws-cdk@2.138.0
 ```
 
 deploy cdk
